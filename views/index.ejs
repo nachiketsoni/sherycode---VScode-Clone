@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+<body>
+  <div id="main">
+
+    <div class="left">
+      <div class="company">
+        <h1>Shery Code</h1>
+      </div>
+      <form action="/createfile">
+        <input autocomplete="off" type="text" name="filesname" placeholder="Filename">
+      </form>
+      <div class="namebox">
+        <% if(files.length > 0 ){ %>
+          <% files.forEach(function(val){ %>
+            <h1><span><%= val %></span><span><a href="/openfile/<%= val %>"><i class="ri-book-open-line"></i></a><a href="/delete/<%= val %>"><i class="ri-delete-bin-line"></i></a></span></h1>
+            <% }) %>
+        <% } else{ %>
+          <h1>No Files Here</h1>
+        <% } %>
+            
+        
+      </div>
+    </div>
+    <div class="right">
+      <div class="nav">
+        <div id="filenav">
+
+          <% files.forEach(function(val){ %>
+            <div class="filenav"><a class="op" href="/openfile/<%= val %>"><%= val %></a><a href="/delete/<%= val %>"><i class="ri-close-fill"></i></a></div>
+            <% }) %>
+
+          </div>
+          <div id="btnspace"></div>
+      </div>
+      <form id="txtform" action="/textdata/<%= filename %>" method="post">
+        <textarea name="txt" ><%= data %></textarea>
+        <input id="submit" type="submit" value="Save">
+      </form>
+      
+    </div>  
+  </div>
+</body>
+</html>
